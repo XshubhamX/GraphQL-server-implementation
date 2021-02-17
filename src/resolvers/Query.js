@@ -45,6 +45,10 @@ const Query = {
       });
     }
   },
+  repoById(parent, args, { db }, info) {
+    const reqRepo = db.repos.find((x) => x.id === args.idQuery);
+    return reqRepo;
+  },
 };
 
 export { Query as default };
