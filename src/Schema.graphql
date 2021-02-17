@@ -1,5 +1,5 @@
 type Query {
-  users(query: String): [User!]!
+  users(query: userQueryData): [User!]!
   repos(query: String): [Repo!]!
 }
 
