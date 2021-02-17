@@ -1,0 +1,26 @@
+type Query {
+  users(query: String): [User!]!
+  repos(query: String): [Repo!]!
+}
+
+type userQueryData {
+  id: ID
+  subName: String
+}
+type repoQueryData {
+  id: ID
+  subTitle: String
+  validity: String
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type Repo {
+  id: ID!
+  title: String!
+  visibility: String!
+}
