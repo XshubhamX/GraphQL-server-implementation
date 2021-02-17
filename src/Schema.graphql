@@ -1,6 +1,8 @@
 type Query {
-  users(idQuery: ID!, nameQuery: String!): [User!]!
-  repos(idQuery: ID!, nameQuery: String!): [Repo!]!
+  users(nameQuery: String): [User!]!
+  repos(nameQuery: String): [Repo!]!
+  userById(idQuery: ID!): User!
+  repoById(idQuery: ID!): Repo!
 }
 
 type User {
