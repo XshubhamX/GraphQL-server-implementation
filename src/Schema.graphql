@@ -1,16 +1,6 @@
 type Query {
-  users(query: userQueryData): [User!]!
-  repos(query: String): [Repo!]!
-}
-
-type userQueryData {
-  id: ID
-  subName: String
-}
-type repoQueryData {
-  id: ID
-  subTitle: String
-  validity: String
+  users(idQuery: ID!, nameQuery: String!): [User!]!
+  repos(idQuery: ID!, nameQuery: String!): [Repo!]!
 }
 
 type User {
