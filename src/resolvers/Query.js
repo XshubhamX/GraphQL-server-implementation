@@ -4,7 +4,6 @@ const Query = {
       return db.users;
     } else if (args.nameQuery) {
       return db.users.filter((x) => {
-        let name = x.name;
         let k = 0;
         for (let i = 0; i < x.name.length; i++) {
           for (let j = 0; j < args.nameQuery.length; j++) {
@@ -26,8 +25,24 @@ const Query = {
     return reqUser;
   },
   repos(parent, args, { db }, info) {
-    if (!args.query) {
+    if (!args.nameQuery) {
       return db.repos;
+    } else if (args.nameQuery) {
+      return db.repos.filter((x) => {
+        let k = 0;
+        for (let i = 0; i < x.title.length; i++) {
+          for (let j = 0; j < args.nameQuery.length; j++) {
+            if (x.title[i + j] !== args.nameQuery[j]) {
+              k = 0;
+              break;
+            }
+            k++;
+            if (k === args.nameQuery.length) {
+              return x;
+            }
+          }
+        }
+      });
     }
   },
 };
