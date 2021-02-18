@@ -5,6 +5,10 @@ type Query {
   repoById(idQuery: ID!): Repo!
 }
 
+type Mutation {
+  createUser(userData: create_user_data!): User!
+}
+
 type User {
   id: ID!
   name: String!
@@ -17,6 +21,11 @@ type Repo {
   title: String!
   visibility: String!
   developer: User!
+}
+
+input create_user_data {
+  name: String!
+  email: String!
 }
 
 enum visibilityQuery {
