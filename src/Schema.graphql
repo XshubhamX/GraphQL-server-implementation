@@ -16,6 +16,7 @@ type Repo {
   id: ID!
   title: String!
   visibility: String!
+  developer: User!
 }
 
 enum visibilityQuery {
