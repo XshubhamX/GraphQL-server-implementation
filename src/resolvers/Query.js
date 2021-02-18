@@ -26,7 +26,7 @@ const Query = {
   },
   repos(parent, args, { db }, info) {
     if (!args.nameQuery) {
-      return db.repos;
+      return db.repos.filter((x) => x.visibility === "public");
     } else if (args.nameQuery) {
       return db.repos.filter((x) => {
         let k = 0;
@@ -38,7 +38,9 @@ const Query = {
             }
             k++;
             if (k === args.nameQuery.length) {
-              return x;
+              if (x.visibility !== "private") {
+                return x;
+              }
             }
           }
         }

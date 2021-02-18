@@ -9,10 +9,17 @@ type User {
   id: ID!
   name: String!
   email: String!
+  repos: [Repo!]!
 }
 
 type Repo {
   id: ID!
   title: String!
   visibility: String!
+}
+
+enum visibility {
+  PUBLIC
+  PRIVATE
+  ALL
 }
