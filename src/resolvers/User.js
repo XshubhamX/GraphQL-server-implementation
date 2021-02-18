@@ -1,6 +1,13 @@
 const User = {
   repos(parent, args, { db }, info) {
-    return db.repos.filter((x) => x.developer === parent.id);
+    if (args.visibility === "ALL") {
+      return db.repos.filter((x) => x.developer === parent.id);
+    }
+    return db.repos.filter(
+      (x) =>
+        x.developer === parent.id &&
+        x.visibility === args.visibility.toLowerCase()
+    );
   },
 };
 

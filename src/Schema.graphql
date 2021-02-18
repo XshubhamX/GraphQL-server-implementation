@@ -9,7 +9,7 @@ type User {
   id: ID!
   name: String!
   email: String!
-  repos: [Repo!]!
+  repos(visibility: visibilityQuery!): [Repo!]!
 }
 
 type Repo {
@@ -18,7 +18,7 @@ type Repo {
   visibility: String!
 }
 
-enum visibility {
+enum visibilityQuery {
   PUBLIC
   PRIVATE
   ALL
